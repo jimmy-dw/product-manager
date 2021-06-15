@@ -3,30 +3,32 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
 
-/*
- Categories
- 1. Get all (GET)
- 2. Create a category (POST)
- 3. Get a single (GET)
- 4. Update a single (PUT)
- 5. Delete a single (DELETE)
-*/
+// Categories
+
+// GET    | api/categories            | categories.index   | CategoryController@index
+// POST   | api/categories            | categories.store   | CategoryController@store
+// GET    | api/categories/{category} | categories.show    | CategoryController@show
+// PUT    | api/categories/{category} | categories.update  | CategoryController@update
+// DELETE | api/categories/{category} | categories.destroy | CategoryController@destroy
+
+Route::apiResource('categories', 'CategoryController');
 
 
-Route::get('/test', function () {
-    return ['message' => 'hello'];
-});
+
+
+// Products
+
+// GET    | api/products           | products.index   | ProductController@index
+// POST   | api/products           | products.store   | ProductController@store
+// GET    | api/products/{product} | products.show    | ProductController@show
+// PUT    | api/products/{product} | products.update  | ProductController@update
+// DELETE | api/products/{product} | products.destroy | ProductController@destroy
+
+Route::apiResource('products', 'ProductController');
+
+
+
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
