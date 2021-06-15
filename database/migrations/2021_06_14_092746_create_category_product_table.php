@@ -22,6 +22,8 @@ class CreateCategoryProductTable extends Migration
             $table->foreignId('product_id')
                 ->constrained()
                 ->onDelete('cascade');
+
+            $table->unique(['category_id', 'product_id']);
         });
     }
 
