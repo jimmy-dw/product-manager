@@ -1,0 +1,62 @@
+"A date string with format `Y-m-d`, e.g. `2011-05-23`."
+scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
+
+"A datetime string with format `Y-m-d H:i:s`, e.g. `2018-05-23 13:43:32`."
+scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+
+type Query {
+    products: [Product] @all
+    product(id: ID @eq): Product @find
+
+    categories: [Category] @all
+    category(id: ID @eq): Category @find
+}
+
+type Mutation {
+
+    createCategory(
+        title: String @rules(apply: ["required", "unique:categories,title"])
+    ): Category @create
+
+    updateCategory(
+        id: ID! @rules(apply: ["required"])
+        title: String @rules(apply: ["required", "unique:categories,title"])
+    ): Category @update
+
+    deleteCategory(
+        id: ID! @rules(apply: ["required"])
+    ): Category @delete
+
+    createProduct(
+        title: String! @rules(apply: ["required"])
+        description: String
+    ): Product @create
+
+    updateProduct(
+        id: ID @rules(apply: ["required"])
+        title: String! @rules(apply: ["required"])
+        description: String
+    ): Product @update
+
+    deleteProduct(
+        id: ID! @rules(apply: ["required"])
+    ): Product @delete
+}
+
+
+type Category {
+    id: ID!
+    title: String!
+    created_at: DateTime!
+    updated_at: DateTime!
+    products: [Product]! @hasMany
+}
+
+type Product {
+    id: ID!
+    title: String!
+    description: String
+    created_at: DateTime!
+    updated_at: DateTime!
+    categories: [Category]! @hasMany
+}

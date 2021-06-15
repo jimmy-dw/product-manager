@@ -44,7 +44,7 @@ class ProductController extends Controller
     /**
      * Create a product
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return Response
      */
     public function store(Request $request)
@@ -75,7 +75,7 @@ class ProductController extends Controller
     /**
      * Update the specified product
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  int  $id ID of the specified product
      * @return Response
      */

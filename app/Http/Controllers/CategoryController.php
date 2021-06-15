@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class CategoryController extends Controller
 {
     /**
      * Display a category
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -21,8 +22,8 @@ class CategoryController extends Controller
     /**
      * Create a category
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -38,7 +39,7 @@ class CategoryController extends Controller
      * Display the specified category
      *
      * @param  int  $id ID of the specified category
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show($id)
     {
@@ -48,9 +49,9 @@ class CategoryController extends Controller
     /**
      * Update the specified category
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  int  $id ID of the specified category
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(Request $request, $id)
     {
@@ -67,7 +68,7 @@ class CategoryController extends Controller
      * Remove the specified category
      *
      * @param  int  $id ID of the specified category
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy($id)
     {
