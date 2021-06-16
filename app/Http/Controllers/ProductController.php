@@ -10,6 +10,11 @@ use Illuminate\Http\Response;
 
 class ProductController extends Controller
 {
+
+    public function home() {
+        return view('welcome');
+    }
+
     /**
      * Get all the products in the specified category
      *

@@ -19,7 +19,7 @@
 </nav>
 
 <div id="app">
-    <app></app>
+    <App></App>
 </div>
 
 <footer class="footer py-5 bg-dark">
