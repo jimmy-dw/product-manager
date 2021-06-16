@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ProductResource;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -9,6 +10,11 @@ use Illuminate\Http\Response;
 
 class ProductController extends Controller
 {
+
+    public function home() {
+        return view('welcome');
+    }
+
     /**
      * Get all the products in the specified category
      *
@@ -28,7 +34,7 @@ class ProductController extends Controller
             return $this->response->error('Could not find a category for the specified ID ' . $category_id, 400);
         }
 
-        return $category->products;
+        return ProductResource::collection($category->products);
     }
 
     /**
@@ -38,7 +44,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return Product::all();
+        return ProductResource::collection(Product::all());
     }
 
     /**

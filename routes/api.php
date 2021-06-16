@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,7 +28,7 @@ Route::apiResource('categories', 'CategoryController');
 
 Route::apiResource('products', 'ProductController');
 
-
+Route::get('/products/by-category/{category_id}', [ProductController::class, 'getProductsByCategory']);
 
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
